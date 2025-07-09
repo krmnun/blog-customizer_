@@ -2,3 +2,41 @@
 	--bg-color: #ffffff;
 	background-color: var(--bg-color, #ffffff);
 }
+
+/* Font families */
+.open-sans { font-family: 'Open Sans', sans-serif; }
+.ubuntu { font-family: 'Ubuntu', sans-serif; }
+.cormorant-garamond { font-family: 'Cormorant Garamond', serif; }
+.days-one { font-family: 'Days One', sans-serif; }
+.merriweather { font-family: 'Merriweather', serif; }
+
+/* Font sizes */
+.font-size-18 { font-size: 18px; }
+.font-size-25 { font-size: 25px; }
+.font-size-38 { font-size: 38px; }
+
+/* Font colors */
+.font-black { color: #000000; }
+.font-white { color: #FFFFFF; }
+.font-gray { color: #C4C4C4; }
+.font-pink { color: #FEAFE8; }
+.font-fuchsia { color: #FD24AF; }
+.font-yellow { color: #FFC802; }
+.font-green { color: #80D994; }
+.font-blue { color: #6FC1FD; }
+.font-purple { color: #5F0DEE; }
+
+/* Background colors */
+.bg-white { background-color: #FFFFFF; }
+.bg-black { background-color: #000000; }
+.bg-gray { background-color: #C4C4C4; }
+.bg-pink { background-color: #FEAFE8; }
+.bg-fuchsia { background-color: #FD24AF; }
+.bg-yellow { background-color: #FFC802; }
+.bg-green { background-color: #80D994; }
+.bg-blue { background-color: #6FC1FD; }
+.bg-purple { background-color: #5F0DEE; }
+
+/* Content widths (используется внутри .article, через var) */
+.width-wide .article { --container-width: 1394px; }
+.width-narrow .article { --container-width: 948px; }

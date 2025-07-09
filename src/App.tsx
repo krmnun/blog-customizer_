@@ -1,53 +1,28 @@
-import React, { useState } from 'react';
-import { ArticleParamsForm } from './components/article-params-form/ArticleParamsForm';
-import { Article } from './components/article/Article';
-import { defaultArticleState } from './constants/articleProps';
-import './styles/index.scss';
+import clsx from 'clsx';
+import { useState, CSSProperties } from 'react';
+import { defaultArticleState } from 'src/constants/articleProps';
+import { Article } from '../src/components/article';
+import { ArticleParamsForm } from '../src/components/article-params-form';
 
-const App: React.FC<object> = () => {
-	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-	const [articleStyles, setArticleStyles] = useState(defaultArticleState);
+import styles from './App.module.scss';
 
-	const updateStyles = (newStyles: typeof defaultArticleState) => {
-		setArticleStyles(newStyles);
-		document.documentElement.style.setProperty(
-			'--font-family',
-			newStyles.fontFamilyOption.value
-		);
-		document.documentElement.style.setProperty(
-			'--font-size',
-			newStyles.fontSizeOption.value
-		);
-		document.documentElement.style.setProperty(
-			'--font-color',
-			newStyles.fontColor.value
-		);
-		document.documentElement.style.setProperty(
-			'--container-width',
-			newStyles.contentWidth.value
-		);
-		document.documentElement.style.setProperty(
-			'--bg-color',
-			newStyles.backgroundColor.value
-		);
-	};
-
-	const handleReset = () => {
-		updateStyles(defaultArticleState);
-	};
+export const App = () => {
+	const [articleStyle, setArticleStyle] = useState(defaultArticleState);
 
 	return (
-		<main className='app'>
-			<ArticleParamsForm
-				initialState={articleStyles}
-				isSidebarOpen={isSidebarOpen}
-				onApply={updateStyles}
-				onReset={handleReset}
-				onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
-			/>
+		<div
+			className={clsx(styles.main)}
+			style={
+				{
+					'--font-family': articleStyle.fontFamilyOption.value,
+					'--font-size': articleStyle.fontSizeOption.value,
+					'--font-color': articleStyle.fontColor.value,
+					'--container-width': articleStyle.contentWidth.value,
+					'--bg-color': articleStyle.backgroundColor.value,
+				} as CSSProperties
+			}>
+			<ArticleParamsForm onChange={setArticleStyle} />
 			<Article />
-		</main>
+		</div>
 	);
 };
-
-export default App;
